@@ -1,3 +1,20 @@
+##Sample runtime example:
+## > source("cachematrix.R")    load R program
+## > a <- makeCacheMatrix()     create functions
+## > a$set(matrix(1:4, 2, 2))   create matrix in working environment
+## > cacheSolve(a)              1st run returns inverted matrix
+##                              from working environment
+## [,1] [,2]
+## [1,]   -2  1.5
+## [2,]    1 -0.5
+##
+## > cacheSolve(a)              2nd and subsequent runs
+##                              returns inverted matrix from cache
+## getting cached data          
+## [,1] [,2]
+## [1,]   -2  1.5
+## [2,]    1 -0.5
+
 ## makeCacheMatrix creates and returns a list of functions
 ## used by cacheSolve to get or set the inverted matrix in cache
 makeCacheMatrix <- function(x = matrix()) {
